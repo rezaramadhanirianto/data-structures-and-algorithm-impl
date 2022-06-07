@@ -1,4 +1,4 @@
-package rezaramadhanirianto.datastructures.stack;
+package com.rezaramadhanirianto.dsaImpl.datastructures.stack;
 
 import com.rezaramadhanirianto.dsaImpl.datastructures.stack.ArrayStack;
 import junit.framework.TestCase;
