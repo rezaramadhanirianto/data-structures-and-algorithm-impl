@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+group 'com.rezaramadhanirianto'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.13.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    // Google Truth test framework
+    // https://mvnrepository.com/artifact/com.google.truth/truth
+    testImplementation group: 'com.google.truth', name: 'truth', version: '1.0'
+}
+
+test {
+    useJUnitPlatform()
+}
