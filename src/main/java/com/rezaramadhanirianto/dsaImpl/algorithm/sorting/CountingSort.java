@@ -30,8 +30,15 @@ public class CountingSort implements Sort{
         }
 
         for(int i = output.length - 1; i >= 0; i--){
-            output[count[values[i]] - 1] = values[i];
-            count[values[i]]--;
+            // decrement is for double number like 5, 5
+            // if we dont decrement it would be 0 for one of same number
+            // it's because value because skip
+            // example:
+            // values {    1,  , 2, 3, 3, 5}
+            // count  { 0, 1, 1, 2, 3, 4, 5 }
+            // if we dont call decrement
+            // would be call by count -> 1, count -> 2, count -> 3, count -> 3, count -> 5
+            output[--count[values[i]]] = values[i];
         }
 
         for (int i = 0; i < output.length; i++){
@@ -40,7 +47,7 @@ public class CountingSort implements Sort{
     }
 
     public static void main(String[] args){
-        int[] array = {3, 2, 1, 5, 6 ,4};
+        int[] array = {3, 2, 1, 5, 5, 6 ,4, 4};
 
         CountingSort countingSort = new CountingSort();
         countingSort.sort(array);
