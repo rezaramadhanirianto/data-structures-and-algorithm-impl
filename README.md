@@ -7,6 +7,7 @@ This repository mainly focused on practice my knowledge about data structures an
 ## List of Content
 - Data Structures
 - Algorithm
+- Big O Notation (Coming Soon)
 - Dynamic Programming (Coming Soon)
 - Competitive Programming (Coming Soon/Different Repository)
 
