@@ -1,4 +1,4 @@
-package com.rezaramadhanirianto.dsaImpl.dynamicprogramming;
+package com.rezaramadhanirianto.dsaImpl.dynamicprogramming.memoization;
 
 public class Fibonacci {
     final int max = 1000;
