@@ -9,7 +9,6 @@ This repository mainly focused on my practice about data structures and algorith
 - Algorithm
 - Big O Notation (Coming Soon)
 - Dynamic Programming
-- Competitive Programming (Coming Soon/Different Repository)
 
 ## Technology
 - <a href="https://www.java.com/">Java 16</a>
