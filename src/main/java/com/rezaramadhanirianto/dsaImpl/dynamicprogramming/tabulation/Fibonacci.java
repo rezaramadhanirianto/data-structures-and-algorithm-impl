@@ -1,4 +1,4 @@
-package com.rezaramadhanirianto.dsaImpl.dynamicprogramming.bottomup;
+package com.rezaramadhanirianto.dsaImpl.dynamicprogramming.tabulation;
 
 public class Fibonacci {
     int fibonacci(int n){
