@@ -1,4 +1,4 @@
-package com.rezaramadhanirianto.dsaImpl.algorithm.search;
+package com.rezaramadhanirianto.dsaImpl.algorithm.search.classic;
 
 public class BinarySearch {
 
