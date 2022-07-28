@@ -6,6 +6,8 @@ public class Exponential {
         System.out.println(exponential(3));
     }
 
+    // 2 -> call function 3
+    // 5 -> call function 15 -> 2⁴ -> 2ⁿ
     static int exponential(int n){
         if(n == 0) return 0;
         if(n == 1) return 1;
