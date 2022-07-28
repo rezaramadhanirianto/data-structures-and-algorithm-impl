@@ -7,7 +7,7 @@ This repository mainly focused on my practice about data structures and algorith
 ## List of Content
 - Data Structures
 - Algorithm
-- Big O Notation (Coming Soon)
+- Big O Notation
 - Dynamic Programming
 
 ## Technology
