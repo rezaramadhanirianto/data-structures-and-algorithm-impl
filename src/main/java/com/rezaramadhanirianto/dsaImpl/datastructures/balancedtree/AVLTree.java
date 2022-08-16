@@ -8,7 +8,7 @@ import java.util.function.Consumer;
 /*
 * Under Construction
 * */
-public class AVLTree<T extends Comparable<T>> implements Iterator<T> {
+public class AVLTree<T extends Comparable<T>> implements Iterable<T> {
 
     public class Node implements TreePrinter.PrintableNode{
         public int balanceFactor;
@@ -178,24 +178,153 @@ public class AVLTree<T extends Comparable<T>> implements Iterator<T> {
         return newParent;
     }
 
-    @Override
-    public boolean hasNext() {
+    public boolean remove(T elem){
+        if(elem == null) return false;
+        if(contains(root, elem)){
+            root = remove(root, elem);
+            nodeCount--;
+            return true;
+        }
         return false;
     }
 
-    @Override
-    public T next() {
-        return null;
+    private Node remove(Node node, T elem) {
+        if (node == null) return null;
+
+        int cmp = elem.compareTo(node.value);
+        // Dig into left subtree, the value we're looking
+        // for is smaller than the current value.
+        if (cmp < 0) {
+            node.left = remove(node.left, elem);
+
+            // Dig into right subtree, the value we're looking
+            // for is greater than the current value.
+        } else if (cmp > 0) {
+            node.right = remove(node.right, elem);
+
+            // Found the node we wish to remove.
+        } else {
+
+            // This is the case with only a right subtree or no subtree at all.
+            // In this situation just swap the node we wish to remove
+            // with its right child.
+            if (node.left == null) {
+                return node.right;
+
+                // This is the case with only a left subtree or
+                // no subtree at all. In this situation just
+                // swap the node we wish to remove with its left child.
+            } else if (node.right == null) {
+                return node.left;
+
+                // When removing a node from a binary tree with two links the
+                // successor of the node being removed can either be the largest
+                // value in the left subtree or the smallest value in the right
+                // subtree. As a heuristic, I will remove from the subtree with
+                // the greatest height in hopes that this may help with balancing.
+            } else {
+
+                // Choose to remove from left subtree
+                if (node.left.height > node.right.height) {
+
+                    // Swap the value of the successor into the node.
+                    T successorValue = findMax(node.left);
+                    node.value = successorValue;
+
+                    // Find the largest node in the left subtree.
+                    node.left = remove(node.left, successorValue);
+
+                } else {
+
+                    // Swap the value of the successor into the node.
+                    T successorValue = findMin(node.right);
+                    node.value = successorValue;
+
+                    // Go into the right subtree and remove the leftmost node we
+                    // found and swapped data with. This prevents us from having
+                    // two nodes in our tree with the same value.
+                    node.right = remove(node.right, successorValue);
+                }
+            }
+        }
+
+        // Update balance factor and height values.
+        update(node);
+
+        // Re-balance tree.
+        return balance(node);
+    }
+
+    // Helper method to find the leftmost node (which has the smallest value)
+    private T findMin(Node node) {
+        while (node.left != null) node = node.left;
+        return node.value;
+    }
+
+    // Helper method to find the rightmost node (which has the largest value)
+    private T findMax(Node node) {
+        while (node.right != null) node = node.right;
+        return node.value;
+    }
+
+    // Returns as iterator to traverse the tree in order.
+    public java.util.Iterator<T> iterator() {
+
+        final int expectedNodeCount = nodeCount;
+        final java.util.Stack<Node> stack = new java.util.Stack<>();
+        stack.push(root);
+
+        return new java.util.Iterator<T>() {
+            Node trav = root;
+
+            @Override
+            public boolean hasNext() {
+                if (expectedNodeCount != nodeCount) throw new java.util.ConcurrentModificationException();
+                return root != null && !stack.isEmpty();
+            }
+
+            @Override
+            public T next() {
+
+                if (expectedNodeCount != nodeCount) throw new java.util.ConcurrentModificationException();
+
+                while (trav != null && trav.left != null) {
+                    stack.push(trav.left);
+                    trav = trav.left;
+                }
+
+                Node node = stack.pop();
+
+                if (node.right != null) {
+                    stack.push(node.right);
+                    trav = node.right;
+                }
+
+                return node.value;
+            }
+
+            @Override
+            public void remove() {
+                throw new UnsupportedOperationException();
+            }
+        };
     }
 
     @Override
-    public void remove() {
-        Iterator.super.remove();
+    public String toString() {
+        return TreePrinter.getTreeDisplay(root);
     }
 
-    @Override
-    public void forEachRemaining(Consumer<? super T> action) {
-        Iterator.super.forEachRemaining(action);
+    // Make sure all left child nodes are smaller in value than their parent and
+    // make sure all right child nodes are greater in value than their parent.
+    // (Used only for testing)
+    public boolean validateBSTInvarient(Node node) {
+        if (node == null) return true;
+        T val = node.value;
+        boolean isValid = true;
+        if (node.left != null) isValid = isValid && node.left.value.compareTo(val) < 0;
+        if (node.right != null) isValid = isValid && node.right.value.compareTo(val) > 0;
+        return isValid && validateBSTInvarient(node.left) && validateBSTInvarient(node.right);
     }
 }
 
