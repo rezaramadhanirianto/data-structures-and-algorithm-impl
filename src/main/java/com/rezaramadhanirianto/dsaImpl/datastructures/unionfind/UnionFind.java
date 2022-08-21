@@ -58,6 +58,14 @@ public class UnionFind {
     public int find(int p){
         int root = p;
         while(root != data[root]) root = data[root];
+
+        // path compression
+//        while (p != root) {
+//            int next = data[p];
+//            data[p] = root;
+//            p = next;
+//        }
+
         return root;
     }
 
