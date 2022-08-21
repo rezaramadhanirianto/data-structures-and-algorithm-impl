@@ -3,11 +3,11 @@ package com.rezaramadhanirianto.dsaImpl.algorithm.search.graphbased;
 import java.util.LinkedList;
 
 public class BreadthFirstSearch extends Graph{
-    BreadthFirstSearch(int size) {
+    public BreadthFirstSearch(int size) {
         super(size);
     }
 
-    void BFS(int s){
+    public void BFS(int s){
         boolean[] visited = new boolean[size];
         LinkedList<Integer> queue = new LinkedList<>();
 

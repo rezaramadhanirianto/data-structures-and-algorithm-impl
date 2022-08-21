@@ -13,7 +13,7 @@ public class Graph {
             adj[i] = new LinkedList();
     }
 
-    void addEdge(int v, int w){
+    public void addEdge(int v, int w){
         adj[v].add(w);
     }
 
