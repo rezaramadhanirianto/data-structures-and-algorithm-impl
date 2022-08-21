@@ -3,7 +3,7 @@ package com.rezaramadhanirianto.dsaImpl.algorithm.greedy;// Prim's Algorithm in 
 import java.util.Arrays;
 
 // this used adjacency matrix
-class PrimsAlgorithm{
+class Prims {
     public void Prim(int G[][], int V){
         int INFINITY = Integer.MAX_VALUE;
 
@@ -44,7 +44,7 @@ class PrimsAlgorithm{
         }
     }
     public static void main(String[] args) {
-        PrimsAlgorithm g = new PrimsAlgorithm();
+        Prims g = new Prims();
 
         // number of vertices in graph
         int V = 6;

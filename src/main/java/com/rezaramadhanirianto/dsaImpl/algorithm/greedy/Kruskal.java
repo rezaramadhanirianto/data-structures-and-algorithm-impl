@@ -3,9 +3,7 @@ package com.rezaramadhanirianto.dsaImpl.algorithm.greedy;
 import com.rezaramadhanirianto.dsaImpl.datastructures.unionfind.UnionFind;
 import com.rezaramadhanirianto.dsaImpl.datastructures.utils.GraphPrinter;
 
-import java.util.Arrays;
-
-public class KruskalAlgorithm {
+public class Kruskal {
     void kruskal(int graph[][], int n){
         int minCost = 0;
 
@@ -37,7 +35,7 @@ public class KruskalAlgorithm {
     }
 
     public static void main(String[] args) {
-        KruskalAlgorithm g = new KruskalAlgorithm();
+        Kruskal g = new Kruskal();
 
         // number of vertices in graph
         int V = 6;
