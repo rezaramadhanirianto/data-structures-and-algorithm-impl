@@ -1,4 +1,4 @@
-## Data Structures and Algorithm
+## Data Structures and Algorithm 
 <img src="https://www.azquotes.com/picture-quotes/quote-bad-programmers-worry-about-the-code-good-programmers-worry-about-data-structures-and-linus-torvalds-75-52-72.jpg"/>
 
 ## What is it?
