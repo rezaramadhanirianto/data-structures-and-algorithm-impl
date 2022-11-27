@@ -1,4 +1,4 @@
-package com.rezaramadhanirianto.dsaImpl.algorithm.search.graphbased;
+package com.rezaramadhanirianto.dsaImpl.algorithm.graph;
 
 import java.util.LinkedList;
 
@@ -16,6 +16,4 @@ public class Graph {
     public void addEdge(int v, int w){
         adj[v].add(w);
     }
-
-
 }

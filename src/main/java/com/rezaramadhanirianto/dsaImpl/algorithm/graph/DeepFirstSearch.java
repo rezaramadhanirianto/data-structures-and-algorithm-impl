@@ -1,6 +1,4 @@
-package com.rezaramadhanirianto.dsaImpl.algorithm.search.graphbased;
-
-import java.util.Iterator;
+package com.rezaramadhanirianto.dsaImpl.algorithm.graph;
 
 public class DeepFirstSearch extends Graph{
     DeepFirstSearch(int size) {

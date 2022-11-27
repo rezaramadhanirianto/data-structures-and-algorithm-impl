@@ -1,4 +1,4 @@
-package com.rezaramadhanirianto.dsaImpl.algorithm.search.graphbased;
+package com.rezaramadhanirianto.dsaImpl.algorithm.graph;
 
 import java.util.LinkedList;
 
