@@ -1,36 +1,34 @@
 package com.rezaramadhanirianto.dsaImpl.algorithm.graph;
 
-public class DeepFirstSearch extends Graph{
-    DeepFirstSearch(int size) {
-        super(size);
-    }
+import com.rezaramadhanirianto.dsaImpl.datastructures.graph.Graph;
 
-    void DFS(int s, boolean[] visited){
-        visited[s] = true;
+public class DeepFirstSearch{
+    static void DFS(Graph graph, int node, boolean[] visited){
+        visited[node] = true;
 
-        System.out.print(s + " ");
-
-        for(int n: adj[s]){
+        System.out.println(node);
+        for(int n: graph.data.get(node)){
             if(!visited[n]){
-                DFS(n, visited);
+                DFS(graph, n, visited);
             }
         }
     }
 
     public static void main(String args[])
     {
-        DeepFirstSearch g = new DeepFirstSearch(4);
-
-        g.addEdge(0, 1);
-        g.addEdge(0, 2);
-        g.addEdge(1, 2);
-        g.addEdge(2, 0);
-        g.addEdge(3, 3);
+        Graph graph = new Graph(5);
+        graph.addEdge(0, 1);
+        graph.addEdge(0, 2);
+        graph.addEdge(0, 4);
+        graph.addEdge(1, 2);
+        graph.addEdge(2, 0);
+        graph.addEdge(2, 3);
+        graph.addEdge(3, 3);
 
         System.out.println(
                 "Following is Depth First Traversal "
                         + "(starting from vertex 2)");
 
-        g.DFS(0, new boolean[g.size]);
+        DFS(graph, 0, new boolean[graph.size]);
     }
 }
