@@ -1,13 +1,17 @@
 package com.rezaramadhanirianto.dsaImpl.datastructures.graph;
 
 
-public class WeightedGraphEdge {
+public class WeightedGraphEdge implements Comparable<WeightedGraphEdge> {
     public double cost;
-    public int from, to;
+    public int node;
 
-    public WeightedGraphEdge(int from, int to, double cost) {
-        this.to = to;
-        this.from = from;
+    public WeightedGraphEdge(int node, double cost) {
+        this.node = node;
         this.cost = cost;
+    }
+
+    @Override
+    public int compareTo(WeightedGraphEdge o) {
+        return (int) (cost - o.cost);
     }
 }

@@ -14,19 +14,21 @@ public class BellmanFord {
         output[start] = 0;
 
         for (int i = 0; i < n - 1; i++) {
-            for(List<WeightedGraphEdge> edges: graph.data){
+            for(int j = 0; j < n; j++){
+                List<WeightedGraphEdge> edges = graph.data[j];
                 for(WeightedGraphEdge edge: edges){
-                    if(output[edge.from] + edge.cost < output[edge.to]){
-                        output[edge.to] = output[edge.from] + edge.cost;
+                    if(output[j] + edge.cost < output[edge.node]){
+                        output[edge.node] = output[j] + edge.cost;
                     }
                 }
             }
         }
 
         for (int i = 0; i < n - 1; i++) {
-            for (List<WeightedGraphEdge> edges : graph.data) {
+            for(int j = 0; j < n; j++){
+                List<WeightedGraphEdge> edges = graph.data[j];
                 for (WeightedGraphEdge edge : edges) {
-                    if (output[edge.from] + edge.cost < output[edge.to]) output[edge.to] = Double.NEGATIVE_INFINITY;
+                    if (output[j] + edge.cost < output[edge.node]) output[edge.node] = Double.NEGATIVE_INFINITY;
                 }
             }
         }

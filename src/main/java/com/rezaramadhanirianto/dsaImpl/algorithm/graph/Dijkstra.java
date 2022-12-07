@@ -1,7 +1,6 @@
-package com.rezaramadhanirianto.dsaImpl.algorithm.greedy;
+package com.rezaramadhanirianto.dsaImpl.algorithm.graph;
 
 
-import java.util.Arrays;
 // Dijkstra / Shortest Path
 // from my POV, Dijkstra Algorithm is check node based on possible edges should be
 // ex: 1 -> 2 -> 3
@@ -23,7 +22,7 @@ public class Dijkstra {
         for (int i = 0; i < count; i++) {
             int indexMinimum = findMin(track, visitedVertex);
             visitedVertex[indexMinimum] = true;
-
+            System.out.println(indexMinimum);
             for (int j = 0; j < count; j++) {
                 // handle already visited         handle start                            check next
                 if(!visitedVertex[j] && graph[indexMinimum][j] != 0 && (track[indexMinimum] + graph[indexMinimum][j] < track[j])){

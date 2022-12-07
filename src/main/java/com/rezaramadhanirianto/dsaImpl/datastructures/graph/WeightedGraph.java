@@ -14,6 +14,6 @@ public class WeightedGraph {
     }
 
     public void addEdge(int from, int to, double cost){
-        data[from].add(new WeightedGraphEdge(from, to, cost));
+        data[from].add(new WeightedGraphEdge(to, cost));
     }
 }
