@@ -60,12 +60,11 @@ public class UnionFind {
         while(root != data[root]) root = data[root];
 
         // path compression
-//        while (p != root) {
-//            int next = data[p];
-//            data[p] = root;
-//            p = next;
-//        }
-
+        while (p != root) {
+            int next = data[p];
+            data[p] = root;
+            p = next;
+        }
         return root;
     }
 
