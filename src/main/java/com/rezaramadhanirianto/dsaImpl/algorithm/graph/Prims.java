@@ -1,4 +1,4 @@
-package com.rezaramadhanirianto.dsaImpl.algorithm.greedy;// Prim's Algorithm in Java
+package com.rezaramadhanirianto.dsaImpl.algorithm.graph;// Prim's Algorithm in Java
 
 import java.util.Arrays;
 

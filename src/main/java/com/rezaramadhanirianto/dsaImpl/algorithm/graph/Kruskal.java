@@ -1,4 +1,4 @@
-package com.rezaramadhanirianto.dsaImpl.algorithm.greedy;
+package com.rezaramadhanirianto.dsaImpl.algorithm.graph;
 
 import com.rezaramadhanirianto.dsaImpl.datastructures.unionfind.UnionFind;
 import com.rezaramadhanirianto.dsaImpl.datastructures.utils.GraphPrinter;
