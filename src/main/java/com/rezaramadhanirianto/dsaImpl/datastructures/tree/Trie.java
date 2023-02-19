@@ -5,37 +5,23 @@ import java.util.Objects;
 // Trie
 public class Trie {
     static final int ALPHABET_SIZE = 26;
-
-    class TrieNode{
-        TrieNode[] children = new TrieNode[ALPHABET_SIZE];
-
-        int count = 0;
-        boolean isEndOfWord;
-
-        TrieNode(){
-            isEndOfWord = false;
-            for (int i = 0; i < ALPHABET_SIZE; i++) children[i] = null;
-        }
-    }
-
     TrieNode root = new TrieNode();
 
     void insert(String key){
-        int level;
-        int length = key.length();
-        int index;
+        int n = key.length(), index = 0;
 
-        TrieNode pCrawl = root;
-        for (level = 0; level < length; level++)
+        TrieNode trav = root;
+        for (int i = 0; i < n; i++)
         {
-            index = key.charAt(level) - 'a';
-            if(pCrawl.children[index] == null) pCrawl.children[index] = new TrieNode();
-            pCrawl.count++;
-            pCrawl = pCrawl.children[index];
+            index = key.charAt(i) - 'a';
+            if(trav.children[index] == null) trav.children[index] = new TrieNode();
+
+            trav.count++;
+            trav = trav.children[index];
         }
 
-        pCrawl.count++;
-        pCrawl.isEndOfWord = true;
+        trav.count++;
+        trav.isEndOfWord = true;
     }
 
     public boolean remove(String key){
@@ -69,13 +55,14 @@ public class Trie {
         return 0;
     }
 
-    TrieNode fixTrie(TrieNode node, String key){
+    // remove elements from cache
+    TrieNode fixTrie(TrieNode trav, String key){
         if(key.equals("")){
             return null;
         }
-        fixTrie(node.children[key.charAt(0) - 'a'], key.substring(1));
-        if(node.children[key.charAt(0) - 'a'].count == 0){
-            node.children[key.charAt(0) - 'a'] = null;
+        fixTrie(trav.children[key.charAt(0) - 'a'], key.substring(1));
+        if(trav.children[key.charAt(0) - 'a'].count == 0){
+            trav.children[key.charAt(0) - 'a'] = null;
         }
         return null;
     }
@@ -85,17 +72,30 @@ public class Trie {
         int length = key.length();
         int index;
 
-        TrieNode pCrawl = root;
+        TrieNode trav = root;
 
         for(level = 0; level < length; level++){
             index = key.charAt(level) - 'a';
 
-            if (pCrawl.children[index] == null)
+            if (trav.children[index] == null)
                 return false;
 
-            pCrawl = pCrawl.children[index];
+            trav = trav.children[index];
         }
 
-        return (pCrawl.isEndOfWord);
+        return (trav.isEndOfWord);
+    }
+
+    // node class
+    class TrieNode{
+        TrieNode[] children = new TrieNode[ALPHABET_SIZE];
+
+        int count = 0;
+        boolean isEndOfWord;
+
+        TrieNode(){
+            isEndOfWord = false;
+            for (int i = 0; i < ALPHABET_SIZE; i++) children[i] = null;
+        }
     }
 }
