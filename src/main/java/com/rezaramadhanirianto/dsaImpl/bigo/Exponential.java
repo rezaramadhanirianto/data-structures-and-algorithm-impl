@@ -6,14 +6,14 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Map;
 
-// O(2ⁿ) -> Exponential
+// O(2^N) -> Exponential
 public class Exponential {
     public static void main(String args[]){
         exponential(3);
     }
 
     // 2 -> call function 3
-    // 5 -> call function 15 -> 2⁴ -> 2ⁿ
+    // 5 -> call function 15 -> 2^4 -> 2^N
     static int exponential(int n){
         int[] arr = new int[]{0,1,2,3,4,5,6};
         int i = 0;
