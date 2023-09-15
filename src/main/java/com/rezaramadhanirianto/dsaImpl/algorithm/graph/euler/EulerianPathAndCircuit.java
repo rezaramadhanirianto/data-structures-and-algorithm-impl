@@ -1,4 +1,4 @@
-package com.rezaramadhanirianto.dsaImpl.algorithm.graph;
+package com.rezaramadhanirianto.dsaImpl.algorithm.graph.euler;
 
 import java.util.*;
 
