@@ -1,13 +1,12 @@
-package com.rezaramadhanirianto.dsaImpl.datastructures.tree;
-
-import java.util.Objects;
+package com.rezaramadhanirianto.dsaImpl.datastructures.trie;
 
 // Trie
-public class Trie {
+public class TrieArray implements Trie {
     static final int ALPHABET_SIZE = 26;
     TrieNode root = new TrieNode();
 
-    void insert(String key){
+    @Override
+    public void insert(String key){
         int n = key.length(), index = 0;
 
         TrieNode trav = root;
@@ -24,6 +23,7 @@ public class Trie {
         trav.isEndOfWord = true;
     }
 
+    @Override
     public boolean remove(String key){
         if (!contains(key)) return false;
 
@@ -37,10 +37,12 @@ public class Trie {
         return true;
     }
 
+    @Override
     public boolean contains(String key){
         return count(key) != 0;
     }
 
+    @Override
     public int count(String key){
         if (key == null) throw new IllegalArgumentException("Null not permitted");
         TrieNode trav = root;
@@ -67,7 +69,8 @@ public class Trie {
         return null;
     }
 
-    boolean search(String key){
+    @Override
+    public boolean search(String key){
         int level;
         int length = key.length();
         int index;
